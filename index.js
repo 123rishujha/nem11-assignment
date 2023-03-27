@@ -1,5 +1,7 @@
 const express = require("express");
+const cors = require('cors');
 require("dotenv").config();
+
 
 
 const { connection } = require("./connection");
@@ -10,14 +12,15 @@ const { postRouter } = require("./routes/posts.route");
 const { authMiddleware } = require("./middlewares/auth.middleware");
 
 
-
 const app = express();
 
 
 app.use(express.json());
+app.use(cors());
 app.use("/users",userRoute);
 app.use(authMiddleware);
 app.use("/posts",postRouter);
+
 
 
 
