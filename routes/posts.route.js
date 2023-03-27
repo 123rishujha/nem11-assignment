@@ -37,7 +37,7 @@ postRouter.post("/add",async(req,res)=>{
 });
 
 //update
-postRouter.update("/update/:postId",async(req,res)=>{
+postRouter.patch("/update/:postId",async(req,res)=>{
     const {postId} = req.params;
     const token = req.headers?.authorization?.split(" ")[1];
     const decoded = jwt.verify(token,"key");
